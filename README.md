@@ -1,3 +1,2 @@
 # DDW19
-Repositorio para Diplomatura de desarrollo web 2019
-.
+Repositorio para diplomatura de desarrollo web 2019
