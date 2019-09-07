@@ -65,7 +65,9 @@ UserSchema.pre("save", function(next){
         next();
     })
 });
-
+/*
+** Nueva Rama
+*/
 var User = mongoose.model("User", UserSchema);
 
 module.exports = User;
