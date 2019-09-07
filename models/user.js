@@ -3,7 +3,7 @@
 */
 
 var mongoose = require('mongoose');
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcrypt'); /* Sirve para encriptar los datos de usuario */
 
 var UserSchema = new mongoose.Schema(
     {
@@ -26,7 +26,9 @@ var UserSchema = new mongoose.Schema(
         }
     }
 );
-
+/*
+** Metodos de extension para UserSchema
+*/
 UserSchema.statics.authenticate = function(email, password, callback) {
     User.findOne({ email: email}).exec(
         function(err, user) {

@@ -25,6 +25,14 @@ db.once("open", function(){
 });
 
 
+/* Fin Conexion a mongo y el login de usuario */
+
+
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
+
+var app = express();
+
 /* 
 ** Sesiones para los login
 ** Aca se guardan automaticamente los registros de conexion 
@@ -43,15 +51,9 @@ app.use(session(
     )
   }
 ));
-
-/* Fin Conexion a mongo y el login de usuario */
-
-
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-
-var app = express();
-
+/*
+** Fin de Sesiones para los login
+*/
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

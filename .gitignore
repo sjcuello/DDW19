@@ -35,6 +35,11 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
+data/diagnostic.data
+data/journal
+
+#All autogenerate DB
+*.wt
 
 # TypeScript v1 declaration files
 typings/
