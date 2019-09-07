@@ -25,6 +25,25 @@ db.once("open", function(){
 });
 
 
+/* 
+** Sesiones para los login
+** Aca se guardan automaticamente los registros de conexion 
+** de la base de datos
+*/
+app.use(session(
+  {
+    secret: "encryptedkeyformongo",
+    resave: true,
+    saveUninitialized: false,
+    cookie: { maxAge: 5 * 60 * 1000}, //sesion de 5 minutos
+    store: new mongostore(
+      {
+        mongooseConnection: db
+      }
+    )
+  }
+));
+
 /* Fin Conexion a mongo y el login de usuario */
 
 
