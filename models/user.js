@@ -1,29 +1,35 @@
-/*
-** Modelo de datos para cada uno de los usuarios
-*/
-
 var mongoose = require('mongoose');
-var bcrypt = require('bcrypt'); /* Sirve para encriptar los datos de usuario */
 
 var UserSchema = new mongoose.Schema(
     {
-        email: {
+        nombre: {
             type: String,
-            unique: true,
+            required: true
+        },
+        apellido: {
+            type: String,
+            required: true
+        },
+        documento:{
+            type: String,
             required: true,
             trim: true
         },
-        username: {
-            type: String,
-            unique: true,
-            required: true,
-            trim: true
+        sexo:{
+            type: Number,
+            required: true
         },
         password: {
             type: String,
             required: true,
             trim: true
+        },
+        voto: {
+            type: Boolean,
+            required: true,
+            default: false
         }
+
     }
 );
 /*
@@ -65,9 +71,7 @@ UserSchema.pre("save", function(next){
         next();
     })
 });
-/*
-** Nueva Rama
-*/
+
 var User = mongoose.model("User", UserSchema);
 
 module.exports = User;

@@ -13,7 +13,7 @@ var mongostore = require('connect-mongo')(session);
 
 
 // conectar con mongo...
-mongoose.connect("mongodb://localhost:27017/DDW", { useNewUrlParser: true, promiseLibrary: bluebird});
+mongoose.connect("mongodb://localhost:27017/votacion", { useNewUrlParser: true, promiseLibrary: bluebird});
 
 // obtenemos en una variable la conexion...
 var db = mongoose.connection;
