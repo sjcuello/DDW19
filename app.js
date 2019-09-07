@@ -5,6 +5,29 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var sassMiddleware = require('node-sass-middleware');
 
+/* Conexion a mongo y el login de usuario */
+var session = require('express-session');
+var mongoose = require('mongoose');
+var bluebird = require('bluebird');
+var mongostore = require('connect-mongo')(session);
+
+
+// conectar con mongo...
+mongoose.connect("mongodb://localhost:27017/DDW", { useNewUrlParser: true, promiseLibrary: bluebird});
+
+// obtenemos en una variable la conexion...
+var db = mongoose.connection;
+
+// seteamos los eventos de conexion.
+db.on("error", console.error.bind(console, "mongodb connection error"));
+db.once("open", function(){
+  console.log('conectado a mongo en localhost:27017');
+});
+
+
+/* Fin Conexion a mongo y el login de usuario */
+
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
