@@ -40,7 +40,7 @@ router.post('/', function(req, res, next) {
             console.log('req.session.userId: ',req.session.userId);
             if (user.voto) {
                 console.log('El usuario ya voto');
-                return res.redirect("/");
+                return res.redirect("/hola");
             } else {
                 User.actualizaEstado(req.session.userId,function (err){
                     console.log('Error:',err);

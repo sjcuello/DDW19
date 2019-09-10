@@ -1,0 +1,17 @@
+<% include header.ejs %>
+
+    <div class="container">
+        <div class="card mt-5 text-light bg-dark shadow-lg">
+            <div class="card-header">
+                <h2 class="card-title">Lista de candidatos</h2>
+            </div>
+        </div>
+        <h1><%= user %></h1>
+        <ul>
+            <% user.forEach(function(user) { %>
+                <li><a href="users/#<%= user.username %>"><%= user %></a></li>
+            <% }) %>
+        </ul>
+    </div> 
+
+<% include footer.ejs %>

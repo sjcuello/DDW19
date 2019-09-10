@@ -13,4 +13,10 @@ router.get('/', function(req, res, next) {
 router.get('/login', function(req, res, next) {
     res.render('login', { title: "Login" });
 });
+
+router.get('/votacion', function(req, res, next) {
+    console.log('req: ',req.session);
+    res.render('votacion', {title: "Login" , user: req.user });
+});
+
 module.exports = router;
