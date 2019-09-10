@@ -38,6 +38,14 @@ UserSchema.statics.authenticate = function(dni, callback) {
         }
     );
 };
+
+UserSchema.statics.actualizaEstado = function(id, callback) {
+    User.updateOne({ _id: id },{ voto: true },(err) => {
+        if (err) {
+            return callback(err);
+        }
+    });
+};
 /*
 UserSchema.statics.authenticate = function(dni, callback) {
     User.findOne({dni}).exec(

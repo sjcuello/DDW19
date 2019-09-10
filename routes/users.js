@@ -36,11 +36,17 @@ router.post('/', function(req, res, next) {
             });
         } else {
             req.session.userId = user._id;
-            console.log('usuario registrado');
+            console.log('user._id: ',user._id);
+            console.log('req.session.userId: ',req.session.userId);
             if (user.voto) {
                 console.log('El usuario ya voto');
                 return res.redirect("/");
             } else {
+                User.actualizaEstado(req.session.userId,function (err){
+                    console.log('Error:',err);
+                    return res.redirect("/");
+                });
+                console.log('Actualizooo!');
                 return res.redirect("/votacion");
             }
         }
