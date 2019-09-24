@@ -61,12 +61,7 @@ router.post('/', function(req, res, next) {
                     return res.redirect("/candidatos");
                 }
             });
-            /*
-            res.status(200).render(
-                'candidate', {
-                    candidates: candidates
-                }
-            );*/
+
         }
     );
 });

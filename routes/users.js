@@ -18,11 +18,11 @@ router.post('/', function(req, res, next) {
     }
 
     User.authenticate(userData.documento, function(err, user) {
-        console.log('DNI: ', userData.dni);
+        console.log('DNI: ', userData.documento);
         if (err) {
             return next(err);
         }
-        console.log('User recuperado');
+        console.log('User recuperado: ', user);
         if (!user) {
             User.create(userData, function(err, user) {
                 if (err) {
@@ -38,7 +38,7 @@ router.post('/', function(req, res, next) {
 
             if (user.voto) {
                 console.log('El usuario ya voto');
-                return res.redirect("/");
+                return res.render("stop", { title: 'Ya voto' });
             } else {
                 User.actualizaEstado(req.session.userId, function(err) {
                     console.log('Error:', err);

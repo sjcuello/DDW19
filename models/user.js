@@ -29,18 +29,19 @@ var UserSchema = new mongoose.Schema({
  ** Metodos de extension para UserSchema
  */
 UserSchema.statics.authenticate = function(dni, callback) {
-    User.findOne({ dni }).exec(
+    User.findOne({ 'documento': dni }).exec(
         function(err, user) {
             if (err) {
                 return callback(err);
             }
+            console.log('Imprime usuario: ', user);
             return callback(null, user);
         }
     );
 };
 
 UserSchema.statics.actualizaEstado = function(id, callback) {
-    User.updateOne({ _id: id },{ voto: true },(err) => {
+    User.updateOne({ _id: id }, { voto: true }, (err) => {
         if (err) {
             return callback(err);
         }
