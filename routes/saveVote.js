@@ -5,7 +5,7 @@ var User = require('../models/user');
 
 router.post("/", function(req, res, next) {
 
-    console.log('route/saveVote - req.body: ', req.body);
+    //console.log('route/saveVote - req.body: ', req.body);
 
     User.actualizaEstado(req.session.userId, function(err) {
         if (err) {
@@ -21,8 +21,11 @@ router.post("/", function(req, res, next) {
             console.log('voto contado...');
         }
     });
-
-    return res.redirect("/stats");
+    res.render("finish", { title: "Votacion finalizada" });
+    setTimeout(() => {
+        return res.render("index", { title: "Votacion" });
+    }, 3000);
+    // esta opcion sola si funciona return res.render("finish", { title: "Votacion finalizada" });
 });
 
 module.exports = router;

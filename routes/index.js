@@ -37,8 +37,8 @@ router.get('/candidatos', function(req, res, next) {
     });
 });
 
-router.get('/statistics', function(req, res, next) {
-    res.status(200).render('statistics', { title: "Estadisticas" });
+router.get('/stats', function(req, res, next) {
+    res.status(200).render('stats', { title: "Estadisticas" });
 });
 
 module.exports = router;

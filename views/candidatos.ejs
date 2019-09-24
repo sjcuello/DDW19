@@ -39,7 +39,6 @@
                         <% }); %>
                 </tbody>
             </table>
-            <img src="<%= candidates.candFile %>" class="img-fluid img-thumbnail">
         </div>
         <div class="card mt-3 text-light shadow-lg">
             <div class="card-header bg-dark text-light">
@@ -48,7 +47,7 @@
             <div class="card-body bg-light">
                 <div>
                     <div>
-                        <form action="/candidates" method="POST">
+                        <form action="/candidates" method="GET">
                             <div class="cargaDatos">
                                 <input class="form-control" type="text" name="name" placeholder="Nombre" required>
                                 <input class="form-control" type="text" name="lastName" placeholder="Apellido" required>
@@ -57,15 +56,7 @@
                                     <option value ="2">Mujer</option>    
                                 </select>
                                 <input class="form-control" type="text" name="partido" placeholder="Partido" required>
-                                <div class="form-group input-group">
-                                    <label class="input-group-addon" style="vertical-align:top;">
-                                    <span class="btn btn-primary">
-                                        Cargar Imágen... <input type="file" onchange="onFileSelected(event);" class="d-none">
-                                    </span>
-                                </label>
-                                    <input class="form-control" type="text" readonly id="candFile" name="candFile" placeholder="Imágen del candidato..." value="<%= candidates.candFile %>" required>
-                                    <input class="d-none" type="text" id="candidate" value="<%= candidates.candFile %>" name="candidate" required>
-                                </div>
+
                             </div>
                             <a class="btn btn-secondary btn-lg" href="/">Volver</a>
                             <input class="btn btn-success btn-lg" type="submit" value="AGREGAR">
