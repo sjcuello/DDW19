@@ -1,6 +1,20 @@
 <% include header.ejs %>
 
-<p>Ahora esto está solo en index todo lo demas está en header y footer..</p>
-<p>Welcome to <%= title %></p>
-
-<% include footer.ejs %>
+    <body class="text-center">
+        <form class="form-singin">
+            <div class="card mt-5 text-light bg-dark shadow-lg">
+                <div class="card-header">
+                    <h2 class="card-title">Elecciones 2019</h2>
+                </div>
+                <div class="card text-primary shadow-lg">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h3>Ingresar a Votar</h3>
+                        </div>
+                        <a class="btn btn-secondary btn-lg" href="/candidates" role="button">VER CANDIDATOS</a>
+                        <a class="btn btn-success btn-lg" href="/login" role="button">VOTAR</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </body>

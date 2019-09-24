@@ -1,17 +1,52 @@
 <% include header.ejs %>
 
-    <div class="container">
+    <body class="text-center">
         <div class="card mt-5 text-light bg-dark shadow-lg">
             <div class="card-header">
-                <h2 class="card-title">Lista de candidatos</h2>
+                <h2 class="card-title">ELECCIONES 2019</h2>
             </div>
         </div>
-        <h1><%= user %></h1>
-        <ul>
-            <% user.forEach(function(user) { %>
-                <li><a href="users/#<%= user.username %>"><%= user %></a></li>
-            <% }) %>
-        </ul>
-    </div> 
-
-<% include footer.ejs %>
+        <div class="card">
+            <form action="/saveVote" method="POST">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr class="header">
+                            <th></th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Sexo</th>
+                            <th>Partido</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% candidatos.forEach((item) => { %>
+                            <tr>
+                                <td>
+                                    <div class="checkbox"><input type="checkbox" name="cand" value="<%= item._id %>"></div>
+                                </td>
+                                <td>
+                                    <%= item.nombre %>
+                                </td>
+                                <td>
+                                    <%= item.apellido %>
+                                </td>
+                                <td>
+                                    <%= item.sexo %>
+                                </td>
+                                <td>
+                                    <%= item.partido %>
+                                </td>
+                                <td>
+                                    <img src="<%= item.candFile %>" class="img-fluid img-thumbnail">
+                                </td>
+                            </tr>
+                            <% }); %>
+                    </tbody>
+                </table>
+                <a class="btn btn-secondary btn-lg" href="/login">Volver</a>
+                <input class="btn btn-success btn-lg" type="submit" value="VOTAR">
+            </form>
+        </div>
+    </body>
+    <% include footer.ejs %>

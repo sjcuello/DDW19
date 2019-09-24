@@ -9,9 +9,7 @@ router.get('/', function(req, res, next) {
 
 /* POST para nuevo usuario o login...*/
 router.post('/', function(req, res, next) {
-    /*
-    { dni: '1234', name: 'Santiago', lastname: 'Cuello', sex: '1' }
-    */
+
     var userData = {
         documento: req.body.dni,
         nombre: req.body.name,
@@ -19,11 +17,12 @@ router.post('/', function(req, res, next) {
         sexo: parseInt(req.body.sex)
     }
 
-    User.authenticate(userData.dni, function(err, user) {
+    User.authenticate(userData.documento, function(err, user) {
+        console.log('DNI: ', userData.dni);
         if (err) {
             return next(err);
         }
-
+        console.log('User recuperado');
         if (!user) {
             User.create(userData, function(err, user) {
                 if (err) {
@@ -36,14 +35,13 @@ router.post('/', function(req, res, next) {
             });
         } else {
             req.session.userId = user._id;
-            console.log('user._id: ',user._id);
-            console.log('req.session.userId: ',req.session.userId);
+
             if (user.voto) {
                 console.log('El usuario ya voto');
-                return res.redirect("/hola");
+                return res.redirect("/");
             } else {
-                User.actualizaEstado(req.session.userId,function (err){
-                    console.log('Error:',err);
+                User.actualizaEstado(req.session.userId, function(err) {
+                    console.log('Error:', err);
                     return res.redirect("/");
                 });
                 console.log('Actualizooo!');
