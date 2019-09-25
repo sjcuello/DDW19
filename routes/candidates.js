@@ -3,10 +3,8 @@ var router = express.Router();
 var Candidate = require('../models/candidate');
 
 router.get('/', function(req, res, next) {
-    console.log('entra get');
     Candidate.find({},
         function(err, candidates) {
-            console.log('entra function');
             if (err) return res.status(500).send(error);
 
             var userData = {
@@ -17,11 +15,10 @@ router.get('/', function(req, res, next) {
             }
             Candidate.create(userData, function(err, user) {
                 if (err) {
-                    console.log('entro en en el error: ', err);
+                    console.log(err);
                     return next(err);
                 } else {
                     req.session.userId = user._id;
-                    console.log('creo');
                     return res.redirect("/candidatos");
                 }
             });
@@ -36,12 +33,9 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-    console.log('entra post');
     Candidate.find({},
         function(err, candidates) {
-            console.log('entra function');
             if (err) return res.status(500).send(error);
-
             var userData = {
                 nombre: req.body.name,
                 apellido: req.body.lastName,
@@ -53,11 +47,10 @@ router.post('/', function(req, res, next) {
 
             Candidate.create(userData, function(err, user) {
                 if (err) {
-                    console.log('entro en en el error: ', err);
+                    console.log(err);
                     return next(err);
                 } else {
                     req.session.userId = user._id;
-                    console.log('creo');
                     return res.redirect("/candidatos");
                 }
             });

@@ -3,14 +3,13 @@
     <body class="text-center">
         <div class="card mt-5 text-light bg-dark shadow-lg">
             <div class="card-header">
-                <h2 class="card-title">CANDIDATOS</h2>
+                <h1 class="card-title">CANDIDATOS</h1>
             </div>
         </div>
         <div class="card">
             <table class="table">
                 <thead class="thead-dark">
                     <tr class="header">
-                        <th scope="col"></th>
                         <th>Nombre</th>
                         <th>Apellido</th>
                         <th>Sexo</th>
@@ -20,9 +19,7 @@
                 <tbody>
                     <% locals.candidatos.forEach((item) => { %>
                         <tr>
-                            <td class="w-25">
-                                <img src="../public/images/<%= item.candFile %>" class="img-fluid img-thumbnail">
-                            </td>
+
                             <td>
                                 <%= item.nombre %>
                             </td>
@@ -40,7 +37,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="card mt-3 text-light shadow-lg">
+        <div class="card mt-5 text-light shadow-lg ">
             <div class="card-header bg-dark text-light">
                 <h1>AGREGAR CANDIDATOS</h1>
             </div>
@@ -66,4 +63,3 @@
             </div>
         </div>
     </body>
-    <script type="text/JavaScript" src="/javascripts/addFile.js"></script>

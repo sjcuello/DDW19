@@ -9,7 +9,7 @@
                 <div class="card text-primary shadow-lg">
                     <div class="card-body">
                         <div class="card-title">
-                            <h3>Estadisticas</h3>
+                            <h3>ESTADISTICAS</h3>
                         </div>
                         <div class="card-title" style="width:50%;height:50%;">
                             <canvas id="myChart" style=" width:50%;height:50%; position: center;"></canvas>
@@ -24,9 +24,21 @@
 
                                 var vdata = [];
 
+                                var vbordercolor = [];
+
+                                var vbackcolor = [];
+
                                 vjson.forEach(element => {
                                     vlabels.push(element.nombre + ' ' + element.apellido);
                                     vdata.push(element.cantVotos);
+
+                                    var aux = {
+                                        col1: Math.floor((Math.random() * 256) + 1),
+                                        col2: Math.floor((Math.random() * 256) + 1),
+                                        col3: Math.floor((Math.random() * 256) + 1)
+                                    }
+                                    vbackcolor.push('rgba(' + aux.col1 + ',' + aux.col2 + ',' + aux.col3 + ', 0.2)');
+                                    vbordercolor.push('rgba(' + aux.col1 + ',' + aux.col2 + ',' + aux.col3 + ', 1)');
                                 });
 
                                 var ctx = document.getElementById('myChart').getContext('2d');
@@ -37,18 +49,8 @@
                                         datasets: [{
                                             label: 'Votos',
                                             data: vdata,
-                                            backgroundColor: [
-                                                'rgba(255, 99, 132, 0.2)',
-                                                'rgba(54, 162, 235, 0.2)',
-                                                'rgba(255, 206, 86, 0.2)',
-                                                'rgba(255, 159, 64, 0.2)'
-                                            ],
-                                            borderColor: [
-                                                'rgba(255, 99, 132, 1)',
-                                                'rgba(54, 162, 235, 1)',
-                                                'rgba(255, 206, 86, 1)',
-                                                'rgba(255, 159, 64, 1)'
-                                            ],
+                                            backgroundColor: vbackcolor,
+                                            borderColor: vbordercolor,
                                             borderWidth: 1
                                         }]
                                     },
@@ -64,7 +66,7 @@
                                 });
                             </script>
                         </div>
-                        <a class="btn btn-success btn-lg" href="/" role="button">VOLVER</a>
+                        <a class="btn btn-primary btn-lg" href="/" role="button">VOLVER</a>
                     </div>
                 </div>
             </div>

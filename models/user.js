@@ -47,31 +47,7 @@ UserSchema.statics.actualizaEstado = function(id, callback) {
         }
     });
 };
-/*
-UserSchema.statics.authenticate = function(dni, callback) {
-    User.findOne({dni}).exec(
-        function(err, user){
-            if (err) {
-                return callback(err);
-            }else{
-                return callback(null, user);
-            }
-        }
-    );
- };*/
-/*
-// Capturar el evento de guardado y encriptar la clave...
-UserSchema.pre("save", function(next){
-    var user = this;
-    bcrypt.hash(user.password, 10, function(err, hash){
-        if (err) {
-            return next(err);
-        }
-        user.password = hash;
-        next();
-    })
-});
-*/
+
 var User = mongoose.model("User", UserSchema);
 
 module.exports = User;

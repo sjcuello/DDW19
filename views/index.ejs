@@ -1,19 +1,20 @@
 <% include header.ejs %>
 
-    <body class="text-center">
+    <body class="text-center body_index">
         <form class="form-singin">
             <div class="card mt-5 text-light bg-dark shadow-lg">
-                <div class="card-header">
-                    <h2 class="card-title">Elecciones 2019</h2>
-                </div>
+
                 <div class="card text-primary shadow-lg">
                     <div class="card-body">
-                        <div class="card-title">
-                            <h3>Ingresar a Votar</h3>
+                        <div class="card-title mt-5 mb-5">
+                            <h1>INICIO DE VOTACION</h1>
                         </div>
-                        <a class="btn btn-secondary btn-lg" href="/candidatos" role="button">VER CANDIDATOS</a>
-                        <a class="btn btn-success btn-lg" href="/login" role="button">VOTAR</a>
-                        <a class="btn btn-success btn-lg" href="/stats" role="button">ESTADISTICAS</a>
+                        <div style="margin-top: 5%">
+                            <a class="btn btn-primary btn-lg ml-5" href="/candidatos" role="button">VER CANDIDATOS</a>
+                            <a class="btn btn-primary btn-lg ml-5 mr-5" href="/login" role="button">VOTAR</a>
+                            <a class="btn btn-primary btn-lg mr-5" href="/stats" role="button">ESTADISTICAS</a>
+                        </div>
+
                     </div>
                 </div>
             </div>

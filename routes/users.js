@@ -2,12 +2,10 @@ var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
 
-/* GET users listing. */
 router.get('/', function(req, res, next) {
     res.send('respond with a resource');
 });
 
-/* POST para nuevo usuario o login...*/
 router.post('/', function(req, res, next) {
 
     var userData = {
@@ -22,7 +20,6 @@ router.post('/', function(req, res, next) {
         if (err) {
             return next(err);
         }
-        console.log('User recuperado: ', user);
         if (!user) {
             User.create(userData, function(err, user) {
                 if (err) {
@@ -37,20 +34,15 @@ router.post('/', function(req, res, next) {
             req.session.userId = user._id;
 
             if (user.voto) {
-                console.log('El usuario ya voto');
                 return res.render("stop", { title: 'Ya voto' });
             } else {
                 User.actualizaEstado(req.session.userId, function(err) {
-                    console.log('Error:', err);
+                    console.log(err);
                     return res.redirect("/");
                 });
-                console.log('Actualizooo!');
                 return res.redirect("/votacion");
             }
         }
-        //req.session.userId = user._id;
-        //return res.redirect("/");
-
     });
 });
 
