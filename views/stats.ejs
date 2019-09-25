@@ -1,0 +1,75 @@
+<% include header.ejs %>
+
+    <body class="text-center">
+        <form class="form-singin">
+            <div class="card mt-5 text-light bg-dark shadow-lg">
+                <div class="card-header">
+                    <h2 class="card-title">Elecciones 2019</h2>
+                </div>
+                <div class="card text-primary shadow-lg">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h3>ESTADISTICAS</h3>
+                        </div>
+                        <div class="card-title" style="width:50%;height:50%;">
+                            <canvas id="myChart" style=" width:50%;height:50%; position: center;"></canvas>
+                            <span id="datos" style="display: none;"><%-locals.candidatos %></span>
+                            <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+                            <script>
+                                var candidatos = document.getElementById('datos');
+                                var vjson = JSON.parse(candidatos.innerHTML);
+                                console.log('vjson: ', vjson);
+
+                                var vlabels = [];
+
+                                var vdata = [];
+
+                                var vbordercolor = [];
+
+                                var vbackcolor = [];
+
+                                vjson.forEach(element => {
+                                    vlabels.push(element.nombre + ' ' + element.apellido);
+                                    vdata.push(element.cantVotos);
+
+                                    var aux = {
+                                        col1: Math.floor((Math.random() * 256) + 1),
+                                        col2: Math.floor((Math.random() * 256) + 1),
+                                        col3: Math.floor((Math.random() * 256) + 1)
+                                    }
+                                    vbackcolor.push('rgba(' + aux.col1 + ',' + aux.col2 + ',' + aux.col3 + ', 0.2)');
+                                    vbordercolor.push('rgba(' + aux.col1 + ',' + aux.col2 + ',' + aux.col3 + ', 1)');
+                                });
+
+                                var ctx = document.getElementById('myChart').getContext('2d');
+                                var myChart = new Chart(ctx, {
+                                    type: 'bar',
+                                    data: {
+                                        labels: vlabels,
+                                        datasets: [{
+                                            label: 'Votos',
+                                            data: vdata,
+                                            backgroundColor: vbackcolor,
+                                            borderColor: vbordercolor,
+                                            borderWidth: 1
+                                        }]
+                                    },
+                                    options: {
+                                        scales: {
+                                            yAxes: [{
+                                                ticks: {
+                                                    beginAtZero: true
+                                                }
+                                            }]
+                                        }
+                                    }
+                                });
+                            </script>
+                        </div>
+                        <a class="btn btn-primary btn-lg" href="/" role="button">VOLVER</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </body>

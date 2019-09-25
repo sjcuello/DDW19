@@ -1,0 +1,65 @@
+<% include header.ejs %>
+
+    <body class="text-center">
+        <div class="card mt-5 text-light bg-dark shadow-lg">
+            <div class="card-header">
+                <h1 class="card-title">CANDIDATOS</h1>
+            </div>
+        </div>
+        <div class="card">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr class="header">
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Sexo</th>
+                        <th>Partido</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% locals.candidatos.forEach((item) => { %>
+                        <tr>
+
+                            <td>
+                                <%= item.nombre %>
+                            </td>
+                            <td>
+                                <%= item.apellido %>
+                            </td>
+                            <td>
+                                <%= item.sexo %>
+                            </td>
+                            <td>
+                                <%= item.partido %>
+                            </td>
+                        </tr>
+                        <% }); %>
+                </tbody>
+            </table>
+        </div>
+        <div class="card mt-5 text-light shadow-lg ">
+            <div class="card-header bg-dark text-light">
+                <h1>AGREGAR CANDIDATOS</h1>
+            </div>
+            <div class="card-body bg-light">
+                <div>
+                    <div>
+                        <form action="/candidates" method="POST">
+                            <div class="cargaDatos">
+                                <input class="form-control" type="text" name="name" placeholder="Nombre" required>
+                                <input class="form-control" type="text" name="lastName" placeholder="Apellido" required>
+                                <select class="form-control" name="sex">
+                                    <option value ="1">Hombre</option>
+                                    <option value ="2">Mujer</option>    
+                                </select>
+                                <input class="form-control" type="text" name="partido" placeholder="Partido" required>
+
+                            </div>
+                            <a class="btn btn-secondary btn-lg" href="/" style="margin-top: 2%">Volver</a>
+                            <input class="btn btn-success btn-lg" type="submit" value="AGREGAR" style="margin-top: 2%">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>

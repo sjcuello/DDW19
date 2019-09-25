@@ -3,41 +3,29 @@
     <div class="container">
         <div class="card mt-5 text-light bg-dark shadow-lg">
             <div class="card-header">
-                <h2 class="card-title">Formulario de Login y Registración</h2>
+                <h2 class="card-title">DATOS DEL CIUDADANO</h2>
             </div>
             <div class="card text-primary shadow-lg">
+
                 <div class="card-body">
-                    <div class="card-title col-md-6 col-lg-6">
-                        <h3>Logearse</h3>
-                    </div>
-                    <div class="formLog col-md-6 col-lg-6">
-                        <form action="/users" method="POST">
-                            <div class="form-group">
-                                <input class="form-control" type="text" name="logemail" 
-                                placeholder="E-mail" required>
-                                <input class="form-control" type="password" name="logpassword" 
-                                placeholder="Clave" required>
-                            </div>
-                            <div class="btnLog">
-                                <input class="btn btn-success btn-lg" type="submit" value="Login">
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="card-title col-md-6 col-lg-6">
+                    <!--<div class="card-title col-md-6 col-lg-6">
                         <h3>Registrarse</h3>
-                    </div>
+                    </div>-->
                     <div class="formReg col-md-6 col-lg-6">
                         <form action="/users" method="POST">
                             <div class="form-group">
-                                <input class="form-control" type="text" name="email" placeholder="E-mail" required>
-                                <input class="form-control" type="text" name="username" placeholder="Usuario" required>
-                                <input class="form-control" type="password" name="password" placeholder="Clave" required>
-                                <input class="form-control" type="password" name="passwordconf" placeholder="Confirmar clave" required>
+                                <input class="form-control" type="text" name="dni" placeholder="Documento" required>
+                                <input class="form-control" type="text" name="name" placeholder="Nombre" required>
+                                <input class="form-control" type="text" name="lastname" placeholder="Apellido" required>
+                                <select class="form-control" name="sex">
+                                    <option value = "1" > Hombre </option>
+                                    <option value = "2" > Mujer </option>
+                                </select>
+                                <!--<input class="form-control" type="text" name="sex" placeholder="Sexo" required>-->
                             </div>
                             <div class="btnReg">
-                                <input class="btn btn-success btn-lg" type="submit" value="Registrarse">
+                                <a class="btn btn-secondary btn-lg" href="/" style="margin-top: 2%">Volver</a>
+                                <input class="btn btn-primary btn-lg" style="margin-top: 2%" type="submit" value="Consultar">
                             </div>
                         </form>
                     </div>
@@ -46,4 +34,4 @@
         </div>
     </div>
 
-<% include footer.ejs %>
+    <% include footer.ejs %>

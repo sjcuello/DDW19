@@ -40,6 +40,11 @@ data/journal
 
 #All autogenerate DB
 *.wt
+data/storage.bson
+data/WiredTiger.turtle
+data/WiredTiger.lock
+data/WiredTiger
+data/mongod.lock
 
 # TypeScript v1 declaration files
 typings/
