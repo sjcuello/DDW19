@@ -38,7 +38,14 @@ router.get('/candidatos', function(req, res, next) {
 });
 
 router.get('/stats', function(req, res, next) {
-    res.status(200).render('stats', { title: "Estadisticas" });
+    Candidate.find((err, candidatos) => {
+        if (err) {
+            return res.status(500).send(err);
+        } else {
+            res.status(200).render('stats', { title: "Estadisticas", candidatos: JSON.stringify(candidatos) });
+        }
+    });
+
 });
 
 module.exports = router;
